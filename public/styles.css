@@ -79,7 +79,7 @@ input[type="text"]:focus::placeholder {
     background-position: center;
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 2000px) {
     .button-group {
         display: flex;
         flex-direction: column;
@@ -116,7 +116,7 @@ input[type="text"]:focus::placeholder {
     }
 /* スクリーンサイズが600px以下の場合 */
     .button-group button, #resetButton {
-        width: 80%; /* ボタンの幅を親要素いっぱいに設定 */
+        width: 100%; /* ボタンの幅を親要素いっぱいに設定 */
         margin: 2px 0; /* ボタン間のマージンを設定 */
     }
 
