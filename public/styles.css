@@ -79,7 +79,7 @@ input[type="text"]:focus::placeholder {
     background-position: center;
 }
 
-@media (max-width: 800px) {
+@media (max-width: 1000px) {
     .button-group {
         display: flex;
         flex-direction: column;
@@ -103,7 +103,7 @@ input[type="text"]:focus::placeholder {
     }
 
     table {
-        font-size: 12px; /* テーブルのフォントサイズを調整 */
+        font-size: 50px; /* テーブルのフォントサイズを調整 */
     }
 
     .table-container {
