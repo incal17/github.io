@@ -91,6 +91,7 @@ input[type="text"]:focus::placeholder {
         margin: 5px 0; /* 上下の余白を増やす */
         width: 100%; /* ボタンの幅を調整 */
         font-size: 14px; /* フォントサイズを調整 */
+        background-color: #ff0000;
     }
 
     th, td {
