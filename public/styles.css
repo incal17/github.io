@@ -79,7 +79,7 @@ input[type="text"]:focus::placeholder {
     background-position: center;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 800px) {
     .button-group {
         display: flex;
         flex-direction: column;
