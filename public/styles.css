@@ -29,6 +29,7 @@ input {
     font-size: 1.3rem;
     white-space: normal; /* デフォルトの折り返しを許可 */
     word-wrap: break-word; /* 長い単語も適切に折り返す */
+    white-space: normal
 }
 
 input:focus {
