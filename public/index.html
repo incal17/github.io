@@ -10,29 +10,28 @@
     <div class="button-group">
         Clear : 
         <button onclick="clearPoints()">Points</button>
-        <button onclick="clearPointsCategpries()">PointsCategpries</button>
+        <button onclick="clearPointsCategpries()">Point Types</button>
         <button onclick="clearNames()">Names</button>
         <button onclick="clearAll()">All</button>
     </div>
-    <button id="resetButton" onclick="resetButton()">Reset</button>
+    <!--<button id="resetButton" onclick="resetButton()">Reset</button>-->
+                <input type="text" name="header1" placeholder="Title" class="large-text">
 
 <div class="table-container">
     <table id="myTable" border="1">
         <tr>
             <th>
-                <input type="text" name="header1" placeholder="Title" class="large-text">
-                <br>
-                <button onclick="addRow()"><i class="fa fa-solid fa-arrow-right-to-bracket fa-rotate-90"></i>Row</button>
-                <button onclick="addColumn()"><i class="fa fa-duotone fa-arrow-right-to-bracket"></i>COL</button>
+                                <button class="add-button"onclick="addRow()"><i class="fa fa-solid fa-arrow-right-to-bracket fa-rotate-90"></i> Row</button>
+                <button class="add-button" onclick="addColumn()"><i class="fa fa-duotone fa-arrow-right-to-bracket"></i> COL</button>
 
             </th>
             <th >
                 <!--<i class="fa fa-solid fa-crown fa-flip" style="color: #eabd1a;"></i>-->
-                <input type="text" name="header1" placeholder="name Ash">
+                <input type="text" name="header1" placeholder="Akira">
                 <button class="delete-btn" onclick="removeColumn(this)"><i class="fas fa-trash"></i></button>
             </th>
             <th>
-                <input type="text" name="header2" placeholder="name Bob">
+                <input type="text" name="header2" placeholder="Bob">
                 <button class="delete-btn" onclick="removeColumn(this)"><i class="fas fa-trash"></i></button>
             </th>
 
@@ -61,10 +60,8 @@
         </tr>
         <tr>
             <td>集計</td>
-            <td class="totalCell">
-                <input type="text" name="column1[]" value="0点"></td>
-            <td class="totalCell">
-                <input type="text" name="column2[]" value="0点"></td>
+            <td class="totalCell">0点</td>
+            <td class="totalCell">0点</td>
 
         </tr>
     </table>

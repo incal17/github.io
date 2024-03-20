@@ -2,21 +2,50 @@
     width: 100%;
     table-layout: fixed;
     border-collapse: collapse;
+    word-wrap: break-word; /* 長い単語も含めて適切な場所で折り返す */
+    overflow-wrap: break-word; /* 長い単語も折り返して、オーバーフローを防ぐ */
+    white-space: normal; /* テキストを自然な折り返しで表示 */
 }
 
 th, td {
     text-align: center;
+   
 }
-
+   /* 偶数行の背景色を設定 */
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+    /* 奇数行の背景色を設定 */
+    tr:nth-child(odd) {
+        background-color: #ffffff;
+    }
 input {
     text-align: center;
-    width: 70%;
+    width: 100%;
     box-sizing: border-box;
     border: none;
     outline: none;
     background-color: transparent;
     font-size: 1.3rem;
+    white-space: normal; /* デフォルトの折り返しを許可 */
+    word-wrap: break-word; /* 長い単語も適切に折り返す */
 }
+
+input:focus {
+    border-bottom: 2px solid #007bff;
+    background-color: #eef4ff;
+}
+
+input[type="text"]:focus::placeholder {
+    color: transparent;
+}
+
+
+/* placeholder スタイルは textarea にも適用可能ですが、特定のブラウザでのサポートが異なる可能性があります */
+textarea::placeholder {
+    color: #ccc; /* プレースホルダーテキストの色を設定 */
+}
+
 
 .button-group {
     border: 2px solid #007bff;
@@ -29,7 +58,7 @@ input {
 button {
     background-color: #007bff;
     color: white;
-    padding: 5px;
+    padding: 0.4em;
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -41,31 +70,23 @@ button {
     box-sizing: border-box;
 }
 
-button:hover {
-    background-color: #0056b3;
-}
+    button:hover {
+        background-color: #0056b3;
+    }
 
 .delete-btn {
     background-color: transparent;
-    color: inherit;
+    color: #808080;
     padding: 3px;
     overflow: visible;
     border-radius: 0;
     margin-right: 0;
 }
 
-.delete-btn:hover {
-    background-color: #d1dcf1;
-}
+    .delete-btn:hover {
+        background-color: #d1dcf1;
+    }
 
-input:focus {
-    border-bottom: 2px solid #007bff;
-    background-color: #eef4ff;
-}
-
-input[type="text"]:focus::placeholder {
-    color: transparent;
-}
 
 .large-text {
     font-size: 1.5rem;
@@ -79,49 +100,62 @@ input[type="text"]:focus::placeholder {
     background-position: center;
 }
 
+.totalCell {
+    font-weight: bold; /* 太字に設定 */
+    font-size: 2rem; /* これもブラウザのデフォルトフォントサイズに基づいて設定 */
+}
+
+
 @media (max-width: 2000px) {
-    .button-group {
+    html {
+        font-size: 2rem; /* これもブラウザのデフォルトフォントサイズに基づいて設定 */
+    }
+    /* 行の高さを設定する場合は以下のスタイルを追加 */
+    tr {
+        height: 4rem; /* 各行の高さを50pxに設定 */
+    }
+
+    .delete-btn {
+        font-size: 1em;
+    }
+
+    .large-text {
+        font-size: 2rem;
+    }
+
+    .add-button {
+        max-width: 100%;
+        font-size: 1em;
+    }
+
+    .button-group, #resetButton {
+        max-width:100%;
         display: flex;
-        flex-direction: column;
-        align-items: center;
+        justify-content: space-around; /* 各ボタンの間に等しいスペースを配置 */
         padding: 5px;
+        margin-bottom: 10px; /* コンテナ下の余白 */
     }
 
-    button, .delete-btn {
-        margin: 5px 0; /* 上下の余白を増やす */
-        width: 100%; /* ボタンの幅を調整 */
-        font-size: 14px; /* フォントサイズを調整 */
-        background-color: #ff0000;
+
+    #resetButton {
+        font-size: 1em;
+        flex: 0 1 auto; /* ボタンがコンテンツに基づいて適切なサイズになるように設定 */
+        margin: 0 2px; /* 左右のマージンを設定 */
     }
 
-    th, td {
-        padding: 5px; /* セルのパディングを調整 */
+    .button-group button, #resetButton {
+        font-size: 1em;
+        flex: 1; /* 各ボタンが等しい幅を持つように設定 */
+        margin: 0 2px; /* 左右のマージンを設定 */
+        /*display: inline-flex;
+        flex: 1 1 15%;*/ /* ボタンを画面幅の25%の幅で伸縮可能に設定 */
+        /*margin: 2px 0;
+        font-size: 14px;*/
     }
 
-    input[type="text"], input[type="number"] {
-        width: 90%; /* inputフィールドの幅を調整 */
-        font-size: 14px; /* フォントサイズを調整 */
-    }
 
-    table {
-        font-size: 50px; /* テーブルのフォントサイズを調整 */
-    }
 
     .table-container {
         overflow-x: auto; /* テーブルを水平方向にスクロール可能に */
-    }
-
-    button {
-        padding: 10px;
-        font-size: 16px; /* タッチしやすいサイズに */
-    }
-/* スクリーンサイズが600px以下の場合 */
-    .button-group button, #resetButton {
-        width: 100%; /* ボタンの幅を親要素いっぱいに設定 */
-        margin: 2px 0; /* ボタン間のマージンを設定 */
-    }
-
-    .button-group {
-        display: block; /* ボタンを縦に並べる */
     }
 }

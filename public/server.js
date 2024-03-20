@@ -1,5 +1,5 @@
 ﻿
-let names = ["ash", "bob", "carol", "denis", "elen", "fishbarg", "godon", "hank", "incal", "jack", "keanu", "leon", "muadive", "neel", "oppo", "prin", "queen", "ruby", "sin", "tarou", "u r me", "viran", "wick", "xian", "yell", "zack"];
+let names = ["Akira", "Buzz", "Chani", "Deku", "Eren", "Frank", "Goku", "Harry", "Iggy", "Jack", "Koopa", "Leon", "Mario", "Nobi", "Olaf", "Pole", "Queen", "Rama", "Sena", "T-800", "Usopp", "Vader", "Wick", "Xmen", "Yoda", "Zoro"];
 
 function addRow() {
     var table = document.getElementById("myTable");
