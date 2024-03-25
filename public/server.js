@@ -29,7 +29,7 @@ function addColumn() {
 
     // ヘッダー行に新しいヘッダーセルを追加
     var headerCell = document.createElement("th");
-    var headerName = names[columnCount % names.length] || `Column ${columnCount}`;
+    var headerName = names[(columnCount-1) % names.length] || `Column ${columnCount}`;
     headerCell.innerHTML = `<input type="text" name="column${columnCount}[]" placeholder="${headerName}" ">
                             <button class="delete-btn" onclick="removeColumn(this)"><i class="fas fa-trash"></i></button>`;
 

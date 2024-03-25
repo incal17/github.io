@@ -1,5 +1,6 @@
 ﻿table {
-    width: 100%;
+    width: 98%;
+    margin: 0 auto;
     table-layout: fixed;
     border-collapse: collapse;
     word-wrap: break-word; /* 長い単語も含めて適切な場所で折り返す */
@@ -48,11 +49,14 @@ textarea::placeholder {
 
 
 .button-group {
+    width: 60%;
+    margin: 0 auto;
     border: 2px solid #007bff;
-    padding: 5px;
-    margin: 5px;
-    border-radius: 10px;
+    padding: 10px;
+    /*margin: 10px 10px 5px 10px;*/
+    border-radius: 15px;
     display: inline-block;
+    box-sizing: border-box; /* パディングと枠線を幅に含める */
 }
 
 button {
@@ -62,8 +66,8 @@ button {
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    margin-right: 5px;
-    margin-bottom: 3px;
+    margin-right: 10px;
+    margin-bottom: 10px;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -132,11 +136,12 @@ button {
     }
 
     .button-group, #resetButton {
-        width:100%;
+        width: 96%;
         display: flex;
         justify-content: space-around; /* 各ボタンの間に等しいスペースを配置 */
-        padding: 5px;
-        margin-bottom: 10px; /* コンテナ下の余白 */
+        padding: 10px;
+        margin-bottom: 5vh; /* コンテナ下の余白 */
+        margin: auto auto;
     }
 
 
@@ -149,7 +154,7 @@ button {
     .button-group button, #resetButton {
         font-size: 1em;
         flex: 1; /* 各ボタンが等しい幅を持つように設定 */
-        margin: 0 2px; /* 左右のマージンを設定 */
+        margin: 0 5px; /* 左右のマージンを設定 */
         /*display: inline-flex;
         flex: 1 1 15%;*/ /* ボタンを画面幅の25%の幅で伸縮可能に設定 */
         /*margin: 2px 0;
