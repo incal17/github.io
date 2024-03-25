@@ -29,7 +29,7 @@ function addColumn() {
 
     // ヘッダー行に新しいヘッダーセルを追加
     var headerCell = document.createElement("th");
-    var headerName = names[(columnCount-1) % names.length] || `Column ${columnCount-1}`;
+    var headerName = names[columnCount % names.length] || `Column ${columnCount}`;
     headerCell.innerHTML = `<input type="text" name="column${columnCount}[]" placeholder="${headerName}" ">
                             <button class="delete-btn" onclick="removeColumn(this)"><i class="fas fa-trash"></i></button>`;
 
@@ -71,7 +71,8 @@ function updateSum() {
 
         let totalCells = table.querySelectorAll('.totalCell');
         if (totalCells && totalCells.length >= colIndex) {
-            totalCells[colIndex - 1].textContent = total + '点';
+            //totalCells[colIndex - 1].textContent = total + '点';
+            totalCells[colIndex - 1].innerHTML = total + '<span style="font-size: 0.5em;">点</span>';
         }
     }
     if (!columnTotals.every(value => value === 0)) {
@@ -167,6 +168,7 @@ function removeColumn(button) {
         table.rows[i].deleteCell(columnIndex);
     }
     saveTableData();
+    updateSum();
 
 }
 
@@ -175,6 +177,7 @@ function removeRow(button) {
     var rowIndex = row.rowIndex;
     document.getElementById("myTable").deleteRow(rowIndex);
     saveTableData();
+    updateSum();
 
 }
 

@@ -29,7 +29,6 @@ input {
     font-size: 1.3rem;
     white-space: normal; /* デフォルトの折り返しを許可 */
     word-wrap: break-word; /* 長い単語も適切に折り返す */
-    white-space: normal
 }
 
 input:focus {
@@ -101,13 +100,16 @@ button {
     background-position: center;
 }
 
-.totalCell {
+.totalCell{
+    font-weight: bold; /* 太字に設定 */
+    font-size: 2rem; /* これもブラウザのデフォルトフォントサイズに基づいて設定 */
+}
+.total {
     font-weight: bold; /* 太字に設定 */
     font-size: 2rem; /* これもブラウザのデフォルトフォントサイズに基づいて設定 */
 }
 
-
-@media (max-width: 2000px) {
+@media (max-width: 4000px) {
     html {
         font-size: 2rem; /* これもブラウザのデフォルトフォントサイズに基づいて設定 */
     }
@@ -130,7 +132,7 @@ button {
     }
 
     .button-group, #resetButton {
-        max-width:100%;
+        width:100%;
         display: flex;
         justify-content: space-around; /* 各ボタンの間に等しいスペースを配置 */
         padding: 5px;
