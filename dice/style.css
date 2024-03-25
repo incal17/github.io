@@ -1,0 +1,240 @@
+#addDiceButton {
+    width: 10vw; /*ボタンの幅*/
+    height: 5vh; /*ボタンの高さ */
+    font-size: 4vh; /* アイコンのサイズ */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    background-color: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    position: fixed; /* ボタンを画面に固定 */
+    top: 1vh; /* 画面の上端からの距離 */
+    right: 3vw; /* 画面の右端からの距離 */
+    z-index: 1000; /* ボタンを最前面に表示 */
+}
+
+#diceContainer {
+    margin-top: 5vh;
+    display: flex;
+    flex-wrap: wrap; /* 複数行に折り返す */
+    flex-direction: row; /* 横方向に要素を並べる */
+    justify-content: center; /* 中央揃え */
+    align-items: center; /* 縦方向の中央揃え */
+    width: 100%; /* コンテナの幅を全体に */
+    overflow-x: auto; /* 横方向にスクロール可能に */
+    gap: 5vw;
+    /*top: 20vh;*/ /* 画面の上端からの距離 */
+}
+
+
+.dice {
+    flex: 1 1 auto; /* サイズに応じて自動調整 */
+    box-sizing: border-box;
+    /*flex-grow: 1;*/
+    min-width: 10vw;
+    max-width: 50vw;
+    aspect-ratio: 1;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 1s;
+    /*margin: calc(var(--dice-size)*0.1);*/
+
+}
+
+.dice-face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    background: white;
+    border: 1px solid black; /* 枠線を追加 */
+}
+
+.dot {
+    width: calc(var(--dice-size)*0.2);
+    height: calc(var(--dice-size)*0.2);
+    background-color: black;
+    border-radius: 50%;
+    /*margin: calc(var(--dice-size)*0.1);*/
+}
+/* 1面の配置 */
+.dice-face.one .dot {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: calc(var(--dice-size)*0.2);
+    height: calc(var(--dice-size)*0.2);
+    background-color: red;
+}
+
+/* 二面の配置 */
+.dice-face.two .dot:first-child {
+    position: absolute;
+    left: 10%;
+    top: 10%;
+}
+
+.dice-face.two .dot:last-child {
+    position: absolute;
+    right: 10%;
+    bottom: 10%;
+}
+
+
+/* ３面の配置 */
+.dice-face.three .dot:nth-child(1) {
+    position: absolute;
+    left: 10%;
+    top: 10%;
+}
+
+.dice-face.three .dot:nth-child(2) {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.dice-face.three .dot:nth-child(3) {
+    position: absolute;
+    right: 10%;
+    bottom: 10%;
+}
+
+
+/* 四面の配置 */
+.dice-face.four .dot {
+    position: absolute;
+}
+
+    .dice-face.four .dot:nth-child(1) {
+        left: 10%;
+        top: 10%;
+    }
+
+    .dice-face.four .dot:nth-child(2) {
+        right: 10%;
+        top: 10%;
+    }
+
+    .dice-face.four .dot:nth-child(3) {
+        left: 10%;
+        bottom: 10%;
+    }
+
+    .dice-face.four .dot:nth-child(4) {
+        right: 10%;
+        bottom: 10%;
+    }
+
+/* 五面の配置（四面の配置に中央のドットを追加） */
+.dice-face.five .dot {
+    position: absolute;
+}
+
+    .dice-face.five .dot:nth-child(1) {
+        left: 10%;
+        top: 10%;
+    }
+
+    .dice-face.five .dot:nth-child(2) {
+        right: 10%;
+        top: 10%;
+    }
+
+    .dice-face.five .dot:nth-child(3) {
+        left: 10%;
+        bottom: 10%;
+    }
+
+    .dice-face.five .dot:nth-child(4) {
+        right: 10%;
+        bottom: 10%;
+    }
+.dice-face.five .dot:nth-child(5) {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* 六面の配置 */
+.dice-face.six .dot {
+    position: absolute;
+}
+
+    .dice-face.six .dot:nth-child(odd) {
+        left: 10%;
+    }
+
+    .dice-face.six .dot:nth-child(even) {
+        right: 10%;
+    }
+
+    .dice-face.six .dot:nth-child(1), .dice-face.six .dot:nth-child(2) {
+        top: 10%;
+    }
+
+    .dice-face.six .dot:nth-child(3), .dice-face.six .dot:nth-child(4) {
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    .dice-face.six .dot:nth-child(5), .dice-face.six .dot:nth-child(6) {
+        bottom: 10%;
+    }
+
+
+
+
+/* 個々の面の位置と向きを指定 */
+.dice-face:nth-child(1) {
+    transform: translateZ(calc(var(--dice-size)/2));
+}
+/* 前 */
+.dice-face:nth-child(2) {
+    transform: rotateY(90deg) translateZ(calc(var(--dice-size)/2));
+}
+/* 右 */
+.dice-face:nth-child(3) {
+    transform: rotateX(90deg) translateZ(calc(var(--dice-size)/2));
+}
+/* 後 */
+.dice-face:nth-child(4) {
+    transform: rotateX(-90deg) translateZ(calc(var(--dice-size)/2));
+}
+/* 左 */
+.dice-face:nth-child(5) {
+    transform: rotateY(-90deg) translateZ(calc(var(--dice-size)/2));
+}
+/* 上 */
+.dice-face:nth-child(6) {
+    transform: rotateX(180deg) translateZ(calc(var(--dice-size)/2));
+}
+/* 下 */
+
+
+.bg_pattern {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: darkgreen;
+    opacity: 0.4;
+    z-index: -1;
+}
+
+.Polka_v2 {
+    background-image: radial-gradient(green 2px, transparent 0px);
+    background-size: 5px 5px;
+}
+
+
+
+/* ここに各面の配置スタイルを追加 */
