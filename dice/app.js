@@ -1,12 +1,12 @@
 ﻿
 let diceCount = 1; // 既存のサイコロをカウント
-function rollAllDice()｛
-for (let i = 1; i <= 6; i++) {
+function rollAllDice(){
+for (let i = 1; i <= diceContainer.length-1; i++) {
     rollDice(i)
     console.log(i);
 }
 
-    ｝
+    }
 function rollDice(diceNumber) {
     var dice = document.getElementById(`dice_${diceNumber}`);
     console.log("dice" + dice)
