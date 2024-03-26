@@ -1,8 +1,10 @@
 ﻿
 let diceCount = 1; // 既存のサイコロをカウント
 function rollAllDice(){
+    rollDice(1);
+    addDice();
 for (let i = 1; i <= diceContainer.length-1; i++) {
-    rollDice(i)
+    rollDice(i);
     console.log(i);
 }
 
