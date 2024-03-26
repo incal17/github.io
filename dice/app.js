@@ -2,7 +2,7 @@
 let diceCount = 1; // 既存のサイコロをカウント
 function rollAllDice(){
     rollDice(1);
-    addDice();
+    const diceContainer = document.getElementById('diceContainer');
 for (let i = 1; i <= diceContainer.length-1; i++) {
     rollDice(i);
     console.log(i);
