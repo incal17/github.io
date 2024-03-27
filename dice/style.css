@@ -39,9 +39,10 @@
     justify-content: center; /* 中央揃え */
     align-items: center; /* 縦方向の中央揃え */
     width: 90%; /* コンテナの幅を全体に */
-    
     gap: 10vw;
-    /*top: 20vh;*/ /* 画面の上端からの距離 */
+    perspective: 50000px;
+    transform: translate(5vw) rotateX(-8deg) rotateY(-10deg); /* 視点のコンテナを斜めに回転させる */
+    transform-style: preserve-3d;
 }
 
 
