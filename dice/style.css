@@ -41,7 +41,7 @@
     width: 90%; /* コンテナの幅を全体に */
     gap: 10vw;
     perspective: 50000px;
-    transform: translate(5vw) rotateX(-8deg) rotateY(-10deg); /* 視点のコンテナを斜めに回転させる */
+    transform: rotateX(-8deg) rotateY(-10deg); /* 視点のコンテナを斜めに回転させる */
     transform-style: preserve-3d;
 }
 
