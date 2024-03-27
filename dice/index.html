@@ -13,12 +13,16 @@
 <body>
 <div class="bg_pattern Polka_v2"></div>
     <button id="addDiceButton"  onclick="addDice()"><i class="fa-solid fa-dice"></i></button>
-    <br><button id="rollAllDicesButton"  onclick="rollAllDice()"><i class="fa-solid fa-repeat"></i></button>
+    <br>
+    <button id="rollAllDiceButton"  onclick="allRollDice()"><!--<i class="fa-solid fa-repeat"></i>--></button>
+
     <br>
     <div id="diceContainer">
 <div id="dice_1" class="dice" onclick="rollDice(1)">
     <div class="dice-face one">
+        <div class="content">
         <span class="dot"></span>
+    </div>
     </div>
     <div class="dice-face two">
         <span class="dot"></span>
@@ -50,6 +54,9 @@
         <span class="dot"></span>
         <span class="dot"></span>
     </div>
+    <div class="dice-face seven"></div>
+    <div class="dice-face eight"></div>
+    <div class="dice-face nine"></div>
 </div>
 </div>
 

@@ -1,14 +1,20 @@
 ﻿
 let diceCount = 1; // 既存のサイコロをカウント
-function rollAllDice(){
-    rollDice(1);
-    const diceContainer = document.getElementById('diceContainer');
-for (let i = 1; i <= diceContainer.length-1; i++) {
-    rollDice(i);
-    console.log(i);
-}
+function allRollDice() {
+    console.log("allRollDice was clicked" );
 
-    }
+    const diceContainer = document.getElementById('diceContainer');
+    const dices = diceContainer.querySelectorAll('.dice'); 
+
+    console.log("diceContainer : " + diceContainer);
+    console.log("diceContainer length: " + diceContainer.length);
+
+    dices.forEach((dice, index) => {
+        rollDice(index + 1); // 0ではなく1から数え始めるために index + 1 を使う
+        console.log("Rolled dice number " + (index + 1));
+    });
+    //}
+}
 function rollDice(diceNumber) {
     var dice = document.getElementById(`dice_${diceNumber}`);
     console.log("dice" + dice)
@@ -19,7 +25,7 @@ function rollDice(diceNumber) {
     var currentY = parseInt(dice.getAttribute('data-y')) || 0;
 
     var currentX
-    var yRand 
+    var xRand, yRand 
     console.log("xRand : " + currentX);
     switch (randomDiceNum) {
         case 1:
@@ -99,12 +105,12 @@ function rollDice(diceNumber) {
     //var yRand = getRandomNumber(5, 9) * 90;
     //var zRand = getRandomNumber(5, 9) * 90;
 
-    currentX += xRand;
-    currentY += yRand;
+    currentX = xRand;
+    //currentY += yRand;
     //currentZ += zRand;
 
     dice.setAttribute('data-x', xRand);
-    dice.setAttribute('data-y', yRand);
+    //dice.setAttribute('data-y', yRand);
     //dice.setAttribute('data-z', yRand);
     //dice.style.transform = `rotateX(${currentX}deg) rotateY(${currentY}deg )`;
     //dice.style.transform = `rotateY(${-currentY}deg) rotateX(${-currentX}deg )`;
@@ -142,7 +148,7 @@ function addDice() {
         <div class="dice-face three"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
         <div class="dice-face four"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
         <div class="dice-face five"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
-        <div class="dice-face six"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>`;
+        <div class="dice-face six"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></div><div class="dice-face seven"></div><div class="dice-face eight"></div><div class="dice-face nine"></div>`;
 
     newDice.setAttribute('data-x', 0);
     newDice.setAttribute('data-y', 0);
