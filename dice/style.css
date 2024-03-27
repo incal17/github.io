@@ -85,7 +85,7 @@
     background-color: black;
     border-radius: 50%;
     backface-visibility: hidden; /* 裏面を非表示に設定 */
-    transform: translateZ(1px); /* これが重要です。必要に応じて値を調整してください */
+    
 }
 /* 1面の配置 */
 .dice-face.one .dot {
