@@ -17,26 +17,22 @@ function allRollDice() {
 }
 function rollDice(diceNumber) {
     var dice = document.getElementById(`dice_${diceNumber}`);
-    console.log("dice" + dice)
     console.log("diceNumber" + diceNumber)
 
     let randomDiceNum = getRandomNumber(1, 7)
     var currentX = parseInt(dice.getAttribute('data-x')) || 0;
-    var currentY = parseInt(dice.getAttribute('data-y')) || 0;
 
-    var currentX
     var xRand, yRand 
-    console.log("xRand : " + currentX);
     switch (randomDiceNum) {
         case 1:
             // サイコロを1の面が上に来るように回転
-            console.log("サイコロは1の面が上");
+            console.log(randomDiceNum);
             if (currentX <= 0) {
                 xRand = 360;
                 yRand = 360;
             } else {
-                xRand = -360;
-                yRand = -360;
+                xRand = 0;
+                yRand = 0;
             }
             break;
         case 2:
@@ -45,8 +41,8 @@ function rollDice(diceNumber) {
                 xRand = 360;
                 yRand = 630;
             } else {
-                xRand = -360;
-                yRand = -450;
+                xRand = 0;
+                yRand = -90;
             }
           
             console.log("サイコロは2の面が上");
@@ -57,8 +53,8 @@ function rollDice(diceNumber) {
                 xRand = 630;
                 yRand = 360;
             } else {
-                xRand = -450;
-                yRand = -360;
+                xRand = -90;
+                yRand = 0;
             } 
             console.log("サイコロは3の面が上");
             break;
@@ -68,8 +64,8 @@ function rollDice(diceNumber) {
                 xRand = 450;
                 yRand = 360;
             } else {
-                xRand = -630;
-                yRand = -360;
+                xRand = -270;
+                yRand = 0;
             } 
             console.log("サイコロは4の面が上");
             break;
@@ -78,8 +74,8 @@ function rollDice(diceNumber) {
                 xRand = 360;
                 yRand = 450;
             } else {
-                xRand = -360;
-                yRand = -630;
+                xRand = 0;
+                yRand = -270;
             } 
             // サイコロを5の面が上に来るように回転
             console.log("サイコロは5の面が上");
@@ -89,8 +85,8 @@ function rollDice(diceNumber) {
                 xRand = 360;
                 yRand = 540;
             } else {
-                xRand = -360;
-                yRand = -540;
+                xRand = 0;
+                yRand = -180;
             } 
             // サイコロを6の面が上に来るように回転
             console.log("サイコロは6の面が上");
@@ -98,25 +94,13 @@ function rollDice(diceNumber) {
     }
     dice.setAttribute('diceFaceNum', randomDiceNum);
 
-    //var currentX = parseInt(dice.getAttribute('data-x')) || 0;
-    //var currentY = parseInt(dice.getAttribute('data-y')) || 0;
-    //var currentZ = parseInt(dice.getAttribute('data-z')) || 0;
-    //var xRand = getRandomNumber(5, 9) * 90;
-    //var yRand = getRandomNumber(5, 9) * 90;
-    //var zRand = getRandomNumber(5, 9) * 90;
-
     currentX = xRand;
-    //currentY += yRand;
-    //currentZ += zRand;
+   
 
     dice.setAttribute('data-x', xRand);
-    //dice.setAttribute('data-y', yRand);
-    //dice.setAttribute('data-z', yRand);
-    //dice.style.transform = `rotateX(${currentX}deg) rotateY(${currentY}deg )`;
-    //dice.style.transform = `rotateY(${-currentY}deg) rotateX(${-currentX}deg )`;
+   
     dice.style.transform = `rotateX(${xRand}deg) rotateY(${yRand}deg )`;
-    console.log("xRand : " + xRand);
-    console.log("yRand : " + yRand);
+
 
 }
 
