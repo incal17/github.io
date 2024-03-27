@@ -11,9 +11,26 @@
     position: fixed; /* ボタンを画面に固定 */
     top: 1vh; /* 画面の上端からの距離 */
     right: 3vw; /* 画面の右端からの距離 */
-    z-index: 1000; /* ボタンを最前面に表示 */
+    
 }
-
+#rollAllDiceButton {
+    background-image: url('./images/rollDice.svg');
+    background-size: contain;
+    background-position: center; /* 画像を中央に配置 */
+    background-repeat: no-repeat;
+    width: 10vw; /*ボタンの幅*/
+    height: 5vh; /*ボタンの高さ */
+    font-size: 4vh; /* アイコンのサイズ */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    background-color: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    position: fixed; /* ボタンを画面に固定 */
+    top: 1vh; /* 画面の上端からの距離 */
+    left: 3vw; /* 画面の右端からの距離 */
+}
 #diceContainer {
     margin-top: 5vh;
     display: flex;
@@ -21,9 +38,9 @@
     flex-direction: row; /* 横方向に要素を並べる */
     justify-content: center; /* 中央揃え */
     align-items: center; /* 縦方向の中央揃え */
-    width: 100%; /* コンテナの幅を全体に */
-    overflow-x: auto; /* 横方向にスクロール可能に */
-    gap: 5vw;
+    width: 90%; /* コンテナの幅を全体に */
+    
+    gap: 10vw;
     /*top: 20vh;*/ /* 画面の上端からの距離 */
 }
 
