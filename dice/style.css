@@ -33,6 +33,8 @@
 }
 #diceContainer {
     margin-top: 5vh;
+　　margin-left: 5vw;
+
     display: flex;
     flex-wrap: wrap; /* 複数行に折り返す */
     flex-direction: row; /* 横方向に要素を並べる */
@@ -40,7 +42,7 @@
     align-items: center; /* 縦方向の中央揃え */
     width: 90%; /* コンテナの幅を全体に */
     gap: 10vw;
-    perspective: 50000px;
+    perspective: 1000px;
     transform: rotateX(-8deg) rotateY(-10deg); /* 視点のコンテナを斜めに回転させる */
     transform-style: preserve-3d;
 }
