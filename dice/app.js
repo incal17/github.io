@@ -1,17 +1,19 @@
-﻿
+
 let diceCount = 0; // 既存のサイコロをカウント
+let diceHistoryText = "";  // 現在のダイスロールの結果を一時的に保存
 let activeDice = {}; // キーとしてダイスのID、値としてアクティブ状態を持つオブジェクト
+let countRoll = 0;
 function allRollDice() {
     console.log("allRollDice was clicked");
-
-    Object.keys(activeDice).forEach((diceId) => {
-        if (activeDice[diceId]) { // ダイスがアクティブな場合のみrollDiceを実行
-            rollDice(diceId);
-            console.log("Rolled dice number " + diceId);
-        }
+    diceHistoryText = "";
+    Object.keys(activeDice).forEach(diceId => {
+        rollDice(diceId, true);
     });
+    updateDiceHistory();  // 末尾のカンマを削除してから更新
+    //diceHistoryText = "";  // テキストをリセット
+
 }
-function rollDice(diceId) {
+function rollDice(diceId, fromAllRoll = false) {
     console.log("rollDice")
 
     if (activeDice[diceId]) { // ダイスがアクティブな場合のみ処理を実行
@@ -103,12 +105,39 @@ function rollDice(diceId) {
         dice.setAttribute('data-x', xRand);
 
         dice.style.transform = `rotateX(${xRand}deg) rotateY(${yRand}deg )`;
+        activeDice[diceId] = randomDiceNum;  // ダイスの目を更新
+        if (!fromAllRoll) {
+            updateDiceHistory(diceId);
+            //diceHistoryText = "";  // テキストをリセット
+        } else {
+           
+        }
 
     }else {
         console.log(`Dice with ID dice_${diceId} is not active.`);
     }
 }
+function updateDiceHistory(changedDiceID) {
+    const historyDiv = document.getElementById('diceHistory');
+    console.log("changedDiceID" + changedDiceID);
+    countRoll++
+    let newHistoryEntry = `${countRoll} : `;
 
+    const sortedDiceIds = Object.keys(activeDice).sort((a, b) => activeDice[a] - activeDice[b]);
+    sortedDiceIds.forEach(diceId => {
+// 変化したダイスIDの結果を太文字で表示
+            if (diceId == changedDiceID || changedDiceID === undefined) {
+            newHistoryEntry += `<b>${activeDice[diceId]}</b>, `;
+        } else {
+            newHistoryEntry += `${activeDice[diceId]}, `;
+        }
+    });
+
+    newHistoryEntry = newHistoryEntry.slice(0, -2) + "<br>";
+
+    historyDiv.innerHTML = newHistoryEntry + historyDiv.innerHTML;
+    historyDiv.scrollTop = 0;
+}
 function getRandomNumber(min, max) {
     return Math.floor(Math.random() * (max - min)) + min;
 }
@@ -140,33 +169,33 @@ function addDice() {
 
     console.log(currentDiceNumber);
     // ダイスをアクティブとしてマーク
-    activeDice[currentDiceNumber] = true;
+    activeDice[currentDiceNumber] = 1;
 
     newDice.setAttribute('data-x', 0);
     newDice.setAttribute('data-y', 0);
     let longPressTimer;
 
-     newDice.onmousedown = function (e) {
-     e.stopPropagation();
-     longPressTimer = window.setTimeout(function () {
-         showPopup(currentDiceNumber);
-         //diceContainer.removeChild(newDice);
-         //delete activeDice[currentDiceNumber];
-         //console.log(`Dice ${currentDiceNumber} removed`);
-         //reSizeDice();
-     }, 1000); // 1秒間長押しで削除
- };
+    newDice.onmousedown = function (e) {
+        e.stopPropagation();
+        longPressTimer = window.setTimeout(function () {
+            showPopup(currentDiceNumber);
+            //diceContainer.removeChild(newDice);
+            //delete activeDice[currentDiceNumber];
+            //console.log(`Dice ${currentDiceNumber} removed`);
+            //reSizeDice();
+        }, 1000); // 1秒間長押しで削除
+    };
 
- newDice.ontouchstart = function (e) {
-     e.stopPropagation();
-     longPressTimer = window.setTimeout(function () {
-         showPopup(currentDiceNumber);
-         //diceContainer.removeChild(newDice);
-         //delete activeDice[currentDiceNumber];
-         //console.log(`Dice ${currentDiceNumber} removed`);
-         //reSizeDice();
-     }, 1000); // 1秒間長押しで削除
- };
+    newDice.ontouchstart = function (e) {
+        e.stopPropagation();
+        longPressTimer = window.setTimeout(function () {
+            showPopup(currentDiceNumber);
+            //diceContainer.removeChild(newDice);
+            //delete activeDice[currentDiceNumber];
+            //console.log(`Dice ${currentDiceNumber} removed`);
+            //reSizeDice();
+        }, 1000); // 1秒間長押しで削除
+    };
 
     newDice.onmouseup = newDice.ontouchend = function (e) {
         clearTimeout(longPressTimer);
@@ -209,7 +238,6 @@ function removeDice(diceNumber) {
         reSizeDice();
     }
 }
-
 window.addEventListener('resize', reSizeDice);
 // 初期設定として左下に配置
 window.onload = function () {
