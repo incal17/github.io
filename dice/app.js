@@ -146,25 +146,27 @@ function addDice() {
     newDice.setAttribute('data-y', 0);
     let longPressTimer;
 
-    newDice.onmousedown = function (e) {
-        e.stopPropagation();
-        longPressTimer = window.setTimeout(function () {
-            diceContainer.removeChild(newDice);
-            delete activeDice[currentDiceNumber];
-            console.log(`Dice ${currentDiceNumber} removed`);
-            reSizeDice();
-        }, 1000); // 1秒間長押しで削除
-    };
+     newDice.onmousedown = function (e) {
+     e.stopPropagation();
+     longPressTimer = window.setTimeout(function () {
+         showPopup(currentDiceNumber);
+         //diceContainer.removeChild(newDice);
+         //delete activeDice[currentDiceNumber];
+         //console.log(`Dice ${currentDiceNumber} removed`);
+         //reSizeDice();
+     }, 1000); // 1秒間長押しで削除
+ };
 
-    newDice.ontouchstart = function (e) {
-        e.stopPropagation();
-        longPressTimer = window.setTimeout(function () {
-            diceContainer.removeChild(newDice);
-            delete activeDice[currentDiceNumber];
-            console.log(`Dice ${currentDiceNumber} removed`);
-            reSizeDice();
-        }, 1000); // 1秒間長押しで削除
-    };
+ newDice.ontouchstart = function (e) {
+     e.stopPropagation();
+     longPressTimer = window.setTimeout(function () {
+         showPopup(currentDiceNumber);
+         //diceContainer.removeChild(newDice);
+         //delete activeDice[currentDiceNumber];
+         //console.log(`Dice ${currentDiceNumber} removed`);
+         //reSizeDice();
+     }, 1000); // 1秒間長押しで削除
+ };
 
     newDice.onmouseup = newDice.ontouchend = function (e) {
         clearTimeout(longPressTimer);
@@ -192,6 +194,21 @@ function addDice() {
 
 }
 
+function showPopup(diceNumber) {
+    if (confirm(`Dice ${diceNumber} を削除しますか？`)) {
+        removeDice(diceNumber);
+    }
+}
+
+function removeDice(diceNumber) {
+    const dice = document.getElementById(`dice_${diceNumber}`);
+    if (dice) {
+        dice.remove();
+        delete activeDice[diceNumber];
+        console.log(`Dice ${diceNumber} removed`);
+        reSizeDice();
+    }
+}
 
 window.addEventListener('resize', reSizeDice);
 // 初期設定として左下に配置
