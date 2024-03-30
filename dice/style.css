@@ -56,6 +56,7 @@ button {
     position: fixed; /* ボタンを画面に固定 */
     top: 1vh; /* 画面の上端からの距離 */
     left: 3vw; /* 画面の右端からの距離 */
+    touch-action: manipulation;
 }
 #editDiceFace {
     width: 20vw; /*ボタンの幅*/
@@ -70,6 +71,7 @@ button {
     position: fixed; /* ボタンを画面に固定 */
     top: 1vh; /* 画面の上端からの距離 */
     left: 25vw; /* 画面の右端からの距離 */
+    touch-action: manipulation;
 }
 #diceContainer {
     margin-top: 10vh;
