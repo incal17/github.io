@@ -98,6 +98,8 @@ button {
     position: relative;
     transform-style: preserve-3d;
     transition: transform 1s;
+    user-select: none;
+    -webkit-user-select: none; /* iOS Safari用のプレフィックス */
     /*margin: calc(var(--dice-size)*0.1);*/
 }
 
