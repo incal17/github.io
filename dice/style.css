@@ -1,4 +1,29 @@
-﻿#addDiceButton {
+﻿/*.button-group {
+    width: 60%;
+    margin: 0 auto;
+    border: 2px solid #007bff;
+    padding: 10px;*/
+    /*margin: 10px 10px 5px 10px;*/
+    /*border-radius: 15px;
+    display: inline-block;
+    box-sizing: border-box;*/ /* パディングと枠線を幅に含める */
+/*}
+
+button {
+    background-color: #007bff;
+    color: white;
+    padding: 0.4em;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    box-sizing: border-box;
+}*/
+#addDiceButton {
     width: 10vw; /*ボタンの幅*/
     height: 5vh; /*ボタンの高さ */
     font-size: 4vh; /* アイコンのサイズ */
@@ -31,7 +56,20 @@
     top: 1vh; /* 画面の上端からの距離 */
     left: 3vw; /* 画面の右端からの距離 */
 }
-
+#editDiceFace {
+    width: 10vw; /*ボタンの幅*/
+    height: 5vh; /*ボタンの高さ */
+    font-size: 4vh; /* アイコンのサイズ */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    background-color: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    position: fixed; /* ボタンを画面に固定 */
+    top: 1vh; /* 画面の上端からの距離 */
+    left: 15vw; /* 画面の右端からの距離 */
+}
 #diceContainer {
     margin-top: 5vh;
     display: flex;
@@ -41,8 +79,11 @@
     align-items: center; /* 縦方向の中央揃え */
     width: 90%; /* コンテナの幅を全体に */
     gap: 10vw;
-    perspective: 50000px;
+    -webkit-perspective: 5000px;
+    perspective: 5000px;
+    -webkit-transform: translate(5vw) rotateX(-8deg) rotateY(-10deg); /* 視点のコンテナを斜めに回転させる */
     transform: translate(5vw) rotateX(-8deg) rotateY(-10deg); /* 視点のコンテナを斜めに回転させる */
+    -webkit-transform-style: preserve-3d;
     transform-style: preserve-3d;
 }
 
@@ -88,11 +129,11 @@
     height: calc(var(--dice-size)*0.2);
     background-color: black;
     border-radius: 50%;
+    position: absolute;
     /*margin: calc(var(--dice-size)*0.1);*/
 }
 /* 1面の配置 */
 .dice-face.one .dot {
-    position: absolute;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
@@ -103,13 +144,11 @@
 
 /* 二面の配置 */
 .dice-face.two .dot:first-child {
-    position: absolute;
     left: 10%;
     top: 10%;
 }
 
 .dice-face.two .dot:last-child {
-    position: absolute;
     right: 10%;
     bottom: 10%;
 }
@@ -117,20 +156,17 @@
 
 /* ３面の配置 */
 .dice-face.three .dot:nth-child(1) {
-    position: absolute;
     left: 10%;
     top: 10%;
 }
 
 .dice-face.three .dot:nth-child(2) {
-    position: absolute;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
 }
 
 .dice-face.three .dot:nth-child(3) {
-    position: absolute;
     right: 10%;
     bottom: 10%;
 }
@@ -138,7 +174,6 @@
 
 /* 四面の配置 */
 .dice-face.four .dot {
-    position: absolute;
 }
 
     .dice-face.four .dot:nth-child(1) {
@@ -163,7 +198,6 @@
 
 /* 五面の配置（四面の配置に中央のドットを追加） */
 .dice-face.five .dot {
-    position: absolute;
 }
 
     .dice-face.five .dot:nth-child(1) {
@@ -187,7 +221,6 @@
     }
 
     .dice-face.five .dot:nth-child(5) {
-        position: absolute;
         left: 50%;
         top: 50%;
         transform: translate(-50%, -50%);
@@ -195,7 +228,6 @@
 
 /* 六面の配置 */
 .dice-face.six .dot {
-    position: absolute;
 }
 
     .dice-face.six .dot:nth-child(odd) {
