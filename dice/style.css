@@ -1,4 +1,4 @@
-﻿/*.button-group {
+/*.button-group {
     width: 60%;
     margin: 0 auto;
     border: 2px solid #007bff;
@@ -24,18 +24,20 @@ button {
     box-sizing: border-box;
 }*/
 #addDiceButton {
-    width: 10vw; /*ボタンの幅*/
-    height: 5vh; /*ボタンの高さ */
-    font-size: 4vh; /* アイコンのサイズ */
-    display: flex;
+    width: 20vw; /*ボタンの幅*/
+    height: 8vh; /*ボタンの高さ */
+    font-size: 5vh; /* アイコンのサイズ */
+    /*display: flex;*/
     justify-content: center;
     align-items: center;
     border: none;
     background-color: rgba(255, 255, 255, 0.5);
+    color: black;
     cursor: pointer;
     position: fixed; /* ボタンを画面に固定 */
     top: 1vh; /* 画面の上端からの距離 */
     right: 3vw; /* 画面の右端からの距離 */
+    touch-action: manipulation;
 }
 
 #rollAllDiceButton {
@@ -43,10 +45,9 @@ button {
     background-size: contain;
     background-position: center; /* 画像を中央に配置 */
     background-repeat: no-repeat;
-    width: 10vw; /*ボタンの幅*/
-    height: 5vh; /*ボタンの高さ */
-    font-size: 4vh; /* アイコンのサイズ */
-    display: flex;
+    width: 20vw; /*ボタンの幅*/
+    height: 8vh; /*ボタンの高さ */
+    font-size: 5vh; /* アイコンのサイズ */
     justify-content: center;
     align-items: center;
     border: none;
@@ -57,21 +58,21 @@ button {
     left: 3vw; /* 画面の右端からの距離 */
 }
 #editDiceFace {
-    width: 10vw; /*ボタンの幅*/
-    height: 5vh; /*ボタンの高さ */
-    font-size: 4vh; /* アイコンのサイズ */
-    display: flex;
+    width: 20vw; /*ボタンの幅*/
+    height: 8vh; /*ボタンの高さ */
+    font-size: 5vh; /* アイコンのサイズ */
     justify-content: center;
     align-items: center;
     border: none;
     background-color: rgba(255, 255, 255, 0.5);
+    color: black;
     cursor: pointer;
     position: fixed; /* ボタンを画面に固定 */
     top: 1vh; /* 画面の上端からの距離 */
-    left: 15vw; /* 画面の右端からの距離 */
+    left: 25vw; /* 画面の右端からの距離 */
 }
 #diceContainer {
-    margin-top: 5vh;
+    margin-top: 10vh;
     display: flex;
     flex-wrap: wrap; /* 複数行に折り返す */
     flex-direction: row; /* 横方向に要素を並べる */
@@ -79,14 +80,34 @@ button {
     align-items: center; /* 縦方向の中央揃え */
     width: 90%; /* コンテナの幅を全体に */
     gap: 10vw;
-    -webkit-perspective: 5000px;
-    perspective: 5000px;
+    -webkit-perspective: 50000px;
+    perspective: 50000px;
     -webkit-transform: translate(5vw) rotateX(-8deg) rotateY(-10deg); /* 視点のコンテナを斜めに回転させる */
     transform: translate(5vw) rotateX(-8deg) rotateY(-10deg); /* 視点のコンテナを斜めに回転させる */
     -webkit-transform-style: preserve-3d;
     transform-style: preserve-3d;
 }
+.dice-history {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 20vh;
+    overflow-y: auto;
+    background-color: rgba(255, 255, 255, 0.9);
+    color: black;
+    padding: 1rem;
+    box-sizing: border-box;
+    font-size: 1.2rem;
+    line-height: 1.5rem; /* 1remの文字サイズに適した行間隔 */
+}
 
+/* 履歴のテキストコンテンツをラップする要素（例えば<div class="content">） */
+.dice-history .content {
+    padding: 1rem;
+    height: calc(5vh - 2rem); /* 外側のpaddingを除いた高さ */
+    overflow-y: auto;
+}
 
 .dice {
     flex: 1 1 auto; /* サイズに応じて自動調整 */
