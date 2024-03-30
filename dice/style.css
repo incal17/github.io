@@ -38,6 +38,7 @@ button {
     top: 1vh; /* 画面の上端からの距離 */
     right: 3vw; /* 画面の右端からの距離 */
     touch-action: manipulation;
+        z-index: 1000; /* 他の要素より前面に表示 */
 }
 
 #rollAllDiceButton {
@@ -57,6 +58,8 @@ button {
     top: 1vh; /* 画面の上端からの距離 */
     left: 3vw; /* 画面の右端からの距離 */
     touch-action: manipulation;
+        z-index: 1000; /* 他の要素より前面に表示 */
+
 }
 #editDiceFace {
     width: 20vw; /*ボタンの幅*/
@@ -72,6 +75,8 @@ button {
     top: 1vh; /* 画面の上端からの距離 */
     left: 25vw; /* 画面の右端からの距離 */
     touch-action: manipulation;
+        z-index: 1000; /* 他の要素より前面に表示 */
+
 }
 #diceContainer {
     margin-top: 10vh;
