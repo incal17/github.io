@@ -1,4 +1,4 @@
-#addDiceButton {
+﻿#addDiceButton {
     width: 10vw; /*ボタンの幅*/
     height: 5vh; /*ボタンの高さ */
     font-size: 4vh; /* アイコンのサイズ */
@@ -11,8 +11,8 @@
     position: fixed; /* ボタンを画面に固定 */
     top: 1vh; /* 画面の上端からの距離 */
     right: 3vw; /* 画面の右端からの距離 */
-    
 }
+
 #rollAllDiceButton {
     background-image: url('./images/rollDice.svg');
     background-size: contain;
@@ -31,10 +31,9 @@
     top: 1vh; /* 画面の上端からの距離 */
     left: 3vw; /* 画面の右端からの距離 */
 }
+
 #diceContainer {
     margin-top: 5vh;
-　　margin-left: 5vw;
-
     display: flex;
     flex-wrap: wrap; /* 複数行に折り返す */
     flex-direction: row; /* 横方向に要素を並べる */
@@ -42,8 +41,8 @@
     align-items: center; /* 縦方向の中央揃え */
     width: 90%; /* コンテナの幅を全体に */
     gap: 10vw;
-    perspective: 1000px;
-    transform: rotateX(-8deg) rotateY(-10deg); /* 視点のコンテナを斜めに回転させる */
+    perspective: 50000px;
+    transform: translate(5vw) rotateX(-8deg) rotateY(-10deg); /* 視点のコンテナを斜めに回転させる */
     transform-style: preserve-3d;
 }
 
@@ -59,7 +58,6 @@
     transform-style: preserve-3d;
     transition: transform 1s;
     /*margin: calc(var(--dice-size)*0.1);*/
-
 }
 
 .dice-face {
@@ -71,8 +69,19 @@
     align-items: center;
     flex-wrap: wrap;
     background: white;
-    border: 1px solid black; /* 枠線を追加 */
+    border: 1px solid white; /* 枠線を追加 */
+    border-radius: 14%;
 }
+    .dice-face.seven, .dice-face.eight, .dice-face.nine {
+        width: 90%; /* サイズを90%に縮小 */
+        height: 90%; /* サイズを90%に縮小 */
+        position: absolute;
+        bottom: 5%; /* 底部に配置 */
+        left: 5%; /* 左から50%の位置に移動 */
+        border-color: white; /* 赤い枠線で区別 */
+        border-radius: 0%;
+    }
+
 
 .dot {
     width: calc(var(--dice-size)*0.2);
@@ -176,12 +185,13 @@
         right: 10%;
         bottom: 10%;
     }
-.dice-face.five .dot:nth-child(5) {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-}
+
+    .dice-face.five .dot:nth-child(5) {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
 
 /* 六面の配置 */
 .dice-face.six .dot {
@@ -236,6 +246,22 @@
 .dice-face:nth-child(6) {
     transform: rotateX(180deg) translateZ(calc(var(--dice-size)/2));
 }
+/* 下 */
+.dice-face:nth-child(7) {
+   
+    /*transform: rotateX(180deg) translateZ(calc(var(--dice-size)/2));*/
+}
+/* 下 */
+.dice-face:nth-child(8) {
+  
+    transform: rotateX(90deg)
+}
+/* 下 */
+.dice-face:nth-child(9) {
+   
+    transform: rotateY(90deg);
+}
+
 /* 下 */
 
 

@@ -1,10 +1,10 @@
 ﻿
 let diceCount = 1; // 既存のサイコロをカウント
 function allRollDice() {
-    console.log("allRollDice was clicked" );
+    console.log("allRollDice was clicked");
 
     const diceContainer = document.getElementById('diceContainer');
-    const dices = diceContainer.querySelectorAll('.dice'); 
+    const dices = diceContainer.querySelectorAll('.dice');
 
     console.log("diceContainer : " + diceContainer);
     console.log("diceContainer length: " + diceContainer.length);
@@ -22,7 +22,7 @@ function rollDice(diceNumber) {
     let randomDiceNum = getRandomNumber(1, 7)
     var currentX = parseInt(dice.getAttribute('data-x')) || 0;
 
-    var xRand, yRand 
+    var xRand, yRand
     switch (randomDiceNum) {
         case 1:
             // サイコロを1の面が上に来るように回転
@@ -44,7 +44,7 @@ function rollDice(diceNumber) {
                 xRand = 0;
                 yRand = -90;
             }
-          
+
             console.log("サイコロは2の面が上");
             break;
         case 3:
@@ -55,7 +55,7 @@ function rollDice(diceNumber) {
             } else {
                 xRand = -90;
                 yRand = 0;
-            } 
+            }
             console.log("サイコロは3の面が上");
             break;
         case 4:
@@ -66,7 +66,7 @@ function rollDice(diceNumber) {
             } else {
                 xRand = -270;
                 yRand = 0;
-            } 
+            }
             console.log("サイコロは4の面が上");
             break;
         case 5:
@@ -76,7 +76,7 @@ function rollDice(diceNumber) {
             } else {
                 xRand = 0;
                 yRand = -270;
-            } 
+            }
             // サイコロを5の面が上に来るように回転
             console.log("サイコロは5の面が上");
             break;
@@ -87,7 +87,7 @@ function rollDice(diceNumber) {
             } else {
                 xRand = 0;
                 yRand = -180;
-            } 
+            }
             // サイコロを6の面が上に来るように回転
             console.log("サイコロは6の面が上");
             break;
@@ -95,10 +95,10 @@ function rollDice(diceNumber) {
     dice.setAttribute('diceFaceNum', randomDiceNum);
 
     currentX = xRand;
-   
+
 
     dice.setAttribute('data-x', xRand);
-   
+
     dice.style.transform = `rotateX(${xRand}deg) rotateY(${yRand}deg )`;
 
 
@@ -156,4 +156,3 @@ window.onload = function () {
     let height = document.documentElement.clientHeight; // ビューポートの高さ
     reSizeDice();
 };
-
