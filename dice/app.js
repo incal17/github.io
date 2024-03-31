@@ -121,7 +121,7 @@ function updateDiceHistory(changedDiceID) {
     const historyDiv = document.getElementById('diceHistory');
     console.log("changedDiceID" + changedDiceID);
     countRoll++
-    let newHistoryEntry = `${countRoll} 2323: `;
+    let newHistoryEntry = `${countRoll} : `;
 
     const sortedDiceIds = Object.keys(activeDice).sort((a, b) => activeDice[a] - activeDice[b]);
     sortedDiceIds.forEach(diceId => {
