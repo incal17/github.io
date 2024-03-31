@@ -23,6 +23,11 @@ button {
     white-space: nowrap;
     box-sizing: border-box;
 }*/
+
+body{
+	font-family: sans-serif ;
+}
+
 #addDiceButton {
     width: 20vw; /*ボタンの幅*/
     height: 8vh; /*ボタンの高さ */
