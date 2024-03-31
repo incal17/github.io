@@ -173,8 +173,9 @@ function addDice() {
 
     newDice.setAttribute('data-x', 0);
     newDice.setAttribute('data-y', 0);
-   let longPressTimer;
-let longPressActivated = false;
+     let longPressTimer;
+    let longPressActivated = false;
+
     newDice.onmousedown = function (e) {
         e.stopPropagation();
         longPressActivated = false; // 初期化
@@ -194,15 +195,21 @@ let longPressActivated = false;
 
     newDice.onclick = function (e) {
         // ここでは長押しによるアクティベーションがない場合にのみロールを実行
-        if (!longPressActivated) {
+        if (isTouching) {
+            // タッチによるクリックイベントの場合は無視する
+            e.preventDefault();
+        } else if (!longPressActivated) {
+            // 通常のクリックイベントの処理
             rollDice(currentDiceNumber);
         }
+
         longPressActivated = false; // フラグをリセット
     };
 
     newDice.ontouchstart = function (e) {
-        e.stopPropagation();
-        longPressActivated = false; // 初期化
+        //e.stopPropagation();
+        isTouching = true;
+        //longPressActivated = false; // 初期化
         longPressTimer = window.setTimeout(function () {
             longPressActivated = true;
             showPopup(currentDiceNumber);
@@ -211,6 +218,7 @@ let longPressActivated = false;
 
     newDice.ontouchend = function (e) {
         clearTimeout(longPressTimer);
+        isTouching = false;
         // ここではロールの処理を行わない（`onclick`で処理）
         longPressActivated = false; // フラグをリセット
     };
@@ -220,9 +228,7 @@ let longPressActivated = false;
         longPressActivated = false; // 移動があった場合は長押しをキャンセル
     };
 
-
-
-   
+    
     diceContainer.appendChild(newDice);
     reSizeDice();
     diceCount++;
