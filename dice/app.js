@@ -182,7 +182,7 @@ function addDice() {
             longPressActivated = true;
             showPopup(currentDiceNumber);
 
-        }, 200); // 1秒間長押しで削除
+        }, 400); // 1秒間長押しで削除
     };
 
     newDice.ontouchstart = function (e) {
@@ -190,7 +190,7 @@ function addDice() {
         longPressTimer = window.setTimeout(function () {
             longPressActivated = true;
             showPopup(currentDiceNumber);
-        }, 200); // 1秒間長押しで削除
+        }, 400); // 1秒間長押しで削除
     };
 
     newDice.onmouseup = newDice.ontouchend = function (e) {
