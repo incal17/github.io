@@ -205,7 +205,7 @@ function addDice() {
     };
 
     newDice.onclick = function () {
-        if (!longPressTimer) {
+        if (!longPressTimer&&longPressActivated==false) {
             rollDice(currentDiceNumber);
         }
     };
