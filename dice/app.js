@@ -175,51 +175,50 @@ function addDice() {
     newDice.setAttribute('data-y', 0);
    let longPressTimer;
 let longPressActivated = false;
+    newDice.onmousedown = function (e) {
+        e.stopPropagation();
+        longPressActivated = false; // 初期化
+        longPressTimer = window.setTimeout(function () {
+            longPressActivated = true;
+            showPopup(currentDiceNumber);
+        }, 400); // 400ミリ秒後に長押しと判断
+    };
 
-newDice.onmousedown = function (e) {
-    e.stopPropagation();
-    longPressActivated = false; // 初期化
-    longPressTimer = window.setTimeout(function () {
-        longPressActivated = true;
-        showPopup(currentDiceNumber);
-    }, 400); // 400ミリ秒後に長押しと判断
-};
+    newDice.onmouseup = function (e) {
+        clearTimeout(longPressTimer);
+        //if (!longPressActivated) {
+        //    rollDice(currentDiceNumber);
+        //}
+        longPressActivated = false; // フラグをリセット
+    };
 
-newDice.onmouseup = function (e) {
-    clearTimeout(longPressTimer);
-    if (!longPressActivated) {
-        rollDice(currentDiceNumber);
-    }
-    longPressActivated = false; // フラグをリセット
-};
+    newDice.onclick = function (e) {
+        // ここでは長押しによるアクティベーションがない場合にのみロールを実行
+        if (!longPressActivated) {
+            rollDice(currentDiceNumber);
+        }
+        longPressActivated = false; // フラグをリセット
+    };
 
-//newDice.onclick = function (e) {
-//    // ここでは長押しによるアクティベーションがない場合にのみロールを実行
-//    if (!longPressActivated) {
-//        rollDice(currentDiceNumber);
-//    }
-//    longPressActivated = false; // フラグをリセット
-//};
+    newDice.ontouchstart = function (e) {
+        e.stopPropagation();
+        longPressActivated = false; // 初期化
+        longPressTimer = window.setTimeout(function () {
+            longPressActivated = true;
+            showPopup(currentDiceNumber);
+        }, 400); // 400ミリ秒後に長押しと判断
+    };
 
-newDice.ontouchstart = function (e) {
-    e.stopPropagation();
-    longPressActivated = false; // 初期化
-    longPressTimer = window.setTimeout(function () {
-        longPressActivated = true;
-        showPopup(currentDiceNumber);
-    }, 400); // 400ミリ秒後に長押しと判断
-};
+    newDice.ontouchend = function (e) {
+        clearTimeout(longPressTimer);
+        // ここではロールの処理を行わない（`onclick`で処理）
+        longPressActivated = false; // フラグをリセット
+    };
 
-newDice.ontouchend = function (e) {
-    clearTimeout(longPressTimer);
-    // ここではロールの処理を行わない（`onclick`で処理）
-    longPressActivated = false; // フラグをリセット
-};
-
-newDice.ontouchmove = function (e) {
-    clearTimeout(longPressTimer);
-    longPressActivated = false; // 移動があった場合は長押しをキャンセル
-};
+    newDice.ontouchmove = function (e) {
+        clearTimeout(longPressTimer);
+        longPressActivated = false; // 移動があった場合は長押しをキャンセル
+    };
 
 
 
