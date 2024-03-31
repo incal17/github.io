@@ -174,32 +174,28 @@ function addDice() {
     newDice.setAttribute('data-x', 0);
     newDice.setAttribute('data-y', 0);
     let longPressTimer;
+    let longPressActivated =false;
 
     newDice.onmousedown = function (e) {
         e.stopPropagation();
         longPressTimer = window.setTimeout(function () {
+            longPressActivated = true;
             showPopup(currentDiceNumber);
-            //diceContainer.removeChild(newDice);
-            //delete activeDice[currentDiceNumber];
-            //console.log(`Dice ${currentDiceNumber} removed`);
-            //reSizeDice();
-        }, 1000); // 1秒間長押しで削除
+
+        }, 200); // 1秒間長押しで削除
     };
 
     newDice.ontouchstart = function (e) {
         e.stopPropagation();
         longPressTimer = window.setTimeout(function () {
+            longPressActivated = true;
             showPopup(currentDiceNumber);
-            //diceContainer.removeChild(newDice);
-            //delete activeDice[currentDiceNumber];
-            //console.log(`Dice ${currentDiceNumber} removed`);
-            //reSizeDice();
-        }, 1000); // 1秒間長押しで削除
+        }, 200); // 1秒間長押しで削除
     };
 
     newDice.onmouseup = newDice.ontouchend = function (e) {
         clearTimeout(longPressTimer);
-        if (e.type === 'mouseup') {
+        if (e.type === 'mouseup' && longPressActivated==false) {
             rollDice(currentDiceNumber);
         }
     };
